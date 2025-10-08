@@ -49,9 +49,7 @@ const formattedDate = new Date(publish_date).toLocaleDateString('en-US', {
       <slot />
     </div>
 
-    <footer class="post-footer">
       <a href="/" class="back-link">← Back to all posts</a>
-    </footer>
   </article>
 </BaseLayout>
 
@@ -113,94 +111,12 @@ const formattedDate = new Date(publish_date).toLocaleDateString('en-US', {
     margin-bottom: 3rem;
   }
 
-  /* Prose styling for markdown content */
-  .post-content :global(h2) {
-    margin-top: 2.5rem;
-    margin-bottom: 1rem;
-    padding-bottom: 0.5rem;
-    border-bottom: 1px solid #ddd;
-  }
-
-  .post-content :global(h3) {
-    margin-top: 2rem;
-    margin-bottom: 0.75rem;
-  }
-
-  .post-content :global(h4),
-  .post-content :global(h5),
-  .post-content :global(h6) {
-    margin-top: 1.5rem;
-    margin-bottom: 0.5rem;
-  }
-
-  .post-content :global(p) {
-    margin-bottom: 1.25rem;
-  }
-
-  .post-content :global(ul),
-  .post-content :global(ol) {
-    margin-bottom: 1.25rem;
-  }
-
-  .post-content :global(li) {
-    margin-bottom: 0.5rem;
-  }
-
-  .post-content :global(blockquote) {
-    border-left: 4px solid #000;
-    padding-left: 1rem;
-    margin: 1.5rem 0;
-    font-style: italic;
-    color: #333;
-  }
-
-  .post-content :global(code:not(.expressive-code *)) {
-    font-family: var(--font-mono);
-    font-size: 0.875em;
-  }
-
-  .post-content :global(pre:not(.expressive-code *)) {
-    margin: 1.5rem 0;
-  }
-
-  /* Expressive Code blocks - override margins */
-  .post-content :global(.expressive-code) {
-    margin: 1.5rem 0;
-  }
-
+  /* Blog-specific content overrides */
   .post-content :global(img) {
     margin: 2rem auto;
     display: block;
   }
 
-  .post-content :global(a) {
-    color: var(--color-link);
-    text-decoration: underline;
-    text-decoration-thickness: 1px;
-    text-underline-offset: 2px;
-  }
-
-  .post-content :global(a:hover) {
-    color: var(--color-link-hover);
-    text-decoration-thickness: 2px;
-  }
-
-  /* Heading anchor links */
-  .post-content :global(.heading-link) {
-    text-decoration: none;
-    color: #999;
-    font-weight: 400;
-    margin-left: 0.25rem;
-  }
-
-  .post-content :global(.heading-link:hover) {
-    color: var(--color-link);
-  }
-
-  .post-footer {
-    padding-top: 2rem;
-    border-top: 2px solid var(--color-border);
-  }
 
   .back-link {
     font-weight: 500;

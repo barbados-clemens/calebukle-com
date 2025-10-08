@@ -24,6 +24,7 @@ export default defineConfig({
             type: 'text',
             value: ' #',
           },
+          test: (node) => node.tagName !== 'h1',
         },
       ],
     ],
