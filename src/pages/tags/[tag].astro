@@ -1,22 +1,41 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
 
-// Get all blog posts, filter out drafts, and sort by date (newest first)
-const allPosts = await getCollection('blog');
-const publishedPosts = allPosts
-  .filter(post => !post.data.draft)
-  .sort((a, b) => b.data.publish_date.valueOf() - a.data.publish_date.valueOf());
+export async function getStaticPaths() {
+  const allPosts = await getCollection('blog');
+  const publishedPosts = allPosts.filter(post => !post.data.draft);
+
+  // Get all unique tags
+  const allTags = new Set<string>();
+  publishedPosts.forEach(post => {
+    post.data.tags?.forEach(tag => allTags.add(tag));
+  });
+
+  // Create a path for each tag
+  return Array.from(allTags).map(tag => ({
+    params: { tag },
+    props: {
+      tag,
+      posts: publishedPosts
+        .filter(post => post.data.tags?.includes(tag))
+        .sort((a, b) => b.data.publish_date.valueOf() - a.data.publish_date.valueOf())
+    },
+  }));
+}
+
+const { tag, posts } = Astro.props;
 ---
 
-<BaseLayout>
-  <section class="hero">
-    <h1>Blog</h1>
-    <p>Writing about web development, tooling, and whatever else interests me.</p>
+<BaseLayout title={`Posts tagged "${tag}" - Caleb Ukle`} description={`Blog posts tagged with ${tag}`}>
+  <section class="tag-header">
+    <h1>Posts tagged: <span class="tag-name">{tag}</span></h1>
+    <p>{posts.length} {posts.length === 1 ? 'post' : 'posts'} found</p>
+    <a href="/" class="back-link">← All posts</a>
   </section>
 
   <section class="posts">
-    {publishedPosts.map(post => {
+    {posts.map(post => {
       const formattedDate = post.data.publish_date.toLocaleDateString('en-US', {
         year: 'numeric',
         month: 'short',
@@ -47,21 +66,40 @@ const publishedPosts = allPosts
 </BaseLayout>
 
 <style>
-  .hero {
+  .tag-header {
     margin-bottom: 3rem;
     padding-bottom: 2rem;
     border-bottom: 2px solid var(--color-border);
   }
 
-  .hero h1 {
-    font-size: 2.5rem;
+  .tag-header h1 {
+    font-size: 2rem;
     margin-bottom: 0.5rem;
   }
 
-  .hero p {
-    font-size: 1.125rem;
+  .tag-name {
+    background: #000;
+    color: #fff;
+    padding: 0.25rem 0.75rem;
+    font-size: 1.75rem;
+  }
+
+  .tag-header p {
+    font-size: 1rem;
     color: #666;
-    margin: 0;
+    margin-bottom: 1rem;
+  }
+
+  .back-link {
+    display: inline-block;
+    font-weight: 500;
+    text-decoration: none;
+    color: var(--color-text);
+    font-size: 0.875rem;
+  }
+
+  .back-link:hover {
+    text-decoration: underline;
   }
 
   .posts {
@@ -119,12 +157,12 @@ const publishedPosts = allPosts
   }
 
   @media (max-width: 640px) {
-    .hero h1 {
-      font-size: 2rem;
+    .tag-header h1 {
+      font-size: 1.5rem;
     }
 
-    .hero p {
-      font-size: 1rem;
+    .tag-name {
+      font-size: 1.5rem;
     }
 
     .post-card h2 {

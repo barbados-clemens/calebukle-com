@@ -1,0 +1,212 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  post: CollectionEntry<'blog'>;
+}
+
+const { post } = Astro.props;
+const { title, description, publish_date, author, tags } = post.data;
+
+// Calculate reading time (rough estimate: 200 words per minute)
+const wordCount = post.body.split(/\s+/).length;
+const readingTime = Math.ceil(wordCount / 200);
+
+// Format date
+const formattedDate = new Date(publish_date).toLocaleDateString('en-US', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric'
+});
+---
+
+<BaseLayout title={`${title} - Caleb Ukle`} description={description}>
+  <article class="blog-post">
+    <header class="post-header">
+      <h1>{title}</h1>
+      <div class="post-meta">
+        <time datetime={publish_date.toISOString()}>{formattedDate}</time>
+        <span class="separator">•</span>
+        <span>{readingTime} min read</span>
+        {author && (
+          <>
+            <span class="separator">•</span>
+            <span>{author}</span>
+          </>
+        )}
+      </div>
+      {tags && tags.length > 0 && (
+        <div class="post-tags">
+          {tags.map(tag => (
+            <a href={`/tags/${tag}`} class="tag">{tag}</a>
+          ))}
+        </div>
+      )}
+    </header>
+
+    <div class="post-content">
+      <slot />
+    </div>
+
+    <footer class="post-footer">
+      <a href="/" class="back-link">← Back to all posts</a>
+    </footer>
+  </article>
+</BaseLayout>
+
+<style>
+  .blog-post {
+    max-width: 100%;
+  }
+
+  .post-header {
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid var(--color-border);
+  }
+
+  .post-header h1 {
+    margin-bottom: 0.5rem;
+    line-height: 1.2;
+  }
+
+  .post-meta {
+    font-size: 0.875rem;
+    color: #666;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    align-items: center;
+  }
+
+  .separator {
+    color: #ccc;
+  }
+
+  .post-tags {
+    margin-top: 0.75rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .tag {
+    font-size: 0.75rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    padding: 0.25rem 0.5rem;
+    background: #000;
+    color: #fff;
+    border: 1px solid #000;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.2s;
+  }
+
+  .tag:hover {
+    background: #fff;
+    color: #000;
+  }
+
+  .post-content {
+    margin-bottom: 3rem;
+  }
+
+  /* Prose styling for markdown content */
+  .post-content :global(h2) {
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #ddd;
+  }
+
+  .post-content :global(h3) {
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .post-content :global(h4),
+  .post-content :global(h5),
+  .post-content :global(h6) {
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .post-content :global(p) {
+    margin-bottom: 1.25rem;
+  }
+
+  .post-content :global(ul),
+  .post-content :global(ol) {
+    margin-bottom: 1.25rem;
+  }
+
+  .post-content :global(li) {
+    margin-bottom: 0.5rem;
+  }
+
+  .post-content :global(blockquote) {
+    border-left: 4px solid #000;
+    padding-left: 1rem;
+    margin: 1.5rem 0;
+    font-style: italic;
+    color: #333;
+  }
+
+  .post-content :global(code:not(.expressive-code *)) {
+    font-family: var(--font-mono);
+    font-size: 0.875em;
+  }
+
+  .post-content :global(pre:not(.expressive-code *)) {
+    margin: 1.5rem 0;
+  }
+
+  /* Expressive Code blocks - override margins */
+  .post-content :global(.expressive-code) {
+    margin: 1.5rem 0;
+  }
+
+  .post-content :global(img) {
+    margin: 2rem auto;
+    display: block;
+  }
+
+  .post-content :global(a) {
+    color: var(--color-link);
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 2px;
+  }
+
+  .post-content :global(a:hover) {
+    color: var(--color-link-hover);
+    text-decoration-thickness: 2px;
+  }
+
+  .post-footer {
+    padding-top: 2rem;
+    border-top: 2px solid var(--color-border);
+  }
+
+  .back-link {
+    font-weight: 500;
+    text-decoration: none;
+    color: var(--color-text);
+  }
+
+  .back-link:hover {
+    text-decoration: underline;
+  }
+
+  @media (max-width: 640px) {
+    .post-meta {
+      font-size: 0.8rem;
+    }
+
+    .post-header {
+      margin-bottom: 1.5rem;
+    }
+  }
+</style>
