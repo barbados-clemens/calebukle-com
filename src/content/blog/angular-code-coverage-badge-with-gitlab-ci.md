@@ -15,7 +15,7 @@ tags:
 > _This post originally appeared on
 > [Medium on July 23, 2018](https://medium.com/@caleb.ukle/code-coverage-badge-with-angular-karma-istanbul-on-gitlab-ci-9611b69ad7e)._
 
-![Pipeline and Code Coverage status badges.](https://cdn.doubleuideas.com/blog/ng-gitlab-code-coverage/badges.png?auto=format)
+![Pipeline and Code Coverage status badges.](../../assets/images/blog_ng-gitlab-code-coverage_badges.png)
 
 ## Update Karma Config
 
@@ -35,7 +35,7 @@ coverageIstanbulReporter:{
 Now when you run `ng test --watch=false --code-coverage` you will get a text
 summary in the console about your code coverage now. Hurrah!
 
-![terminal output showing code coverage](https://cdn.doubleuideas.com/blog/ng-gitlab-code-coverage/coverage-output.png?auto=format)
+![terminal output showing code coverage](../../assets/images/blog_ng-gitlab-code-coverage_coverage-output.png)
 
 Alright, so now your project is configured to display the code coverage in the
 console. This is an important step because Gitlab uses Ruby Regular Expressions

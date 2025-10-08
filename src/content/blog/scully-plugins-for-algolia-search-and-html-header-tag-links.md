@@ -3,7 +3,7 @@ title: Scully Plugins for Algolia Search and HTML Header Tag Links and More!
 description: While converting this blog over to Scully, I ended up writing plugins for updating an Algoia index and providing links to header locations, and a some other helpful ones. Check them all out here!
 author: Caleb Ukle
 publish_date: 2020-02-16
-img: https://cdn.doubleuideas.com/blog/gatsby-to-scully/scullyio-logo.png?auto=format
+img: ../../assets/images/blog_gatsby-to-scully_scullyio-logo.png
 tags:
   - Scully
   - Algoila

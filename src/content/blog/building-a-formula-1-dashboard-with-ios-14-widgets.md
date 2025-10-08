@@ -3,7 +3,7 @@ title: Building a Formula 1 Dashboard with iOS 14 Widgets
 description: iOS 14 introduce a breakthrough new feature called widgets. Never has the world seen such innovation in mobile phone operating system features. Um, well okay yeah not really, but hey we got this feature so why not use it. Here is how I built myself a little dashboard for all my Formula 1 wants, and how you can do it too!
 author: Caleb Ukle
 publish_date: 2020-09-21
-img: https://cdn.doubleuideas.com/blog/ios-f1-dashboard/ios14-f1-dashboard.png?auto=format
+img: ../../assets/images/blog_ios-f1-dashboard_ios14-f1-dashboard.png
 tags:
   - iOS
   - F1
@@ -11,7 +11,7 @@ tags:
   - Blog
 ---
 
-![My F1 Dashboard on iOS 14](https://cdn.doubleuideas.com/blog/ios-f1-dashboard/ios14-f1-dashboard.png?auto=format)
+![My F1 Dashboard on iOS 14](../../assets/images/blog_ios-f1-dashboard_ios14-f1-dashboard.png)
 
 Of the 4 widgets on my dashboard only 2 are custom ones. The other two are from
 [Apollo, an iOS Reddit client](https://apolloapp.io/).
@@ -34,7 +34,7 @@ works best as a small widget.
 > It seems like the Calendar app already handles all the Timezone date
 > wrangling. Or at least it lines up when I use it.
 
-![Time until next event widget display example](https://cdn.doubleuideas.com/blog/ios-f1-dashboard/time-until-next-f1-event.png?auto=format)
+![Time until next event widget display example](../../assets/images/blog_ios-f1-dashboard_time-until-next-f1-event.png)
 
 ### How To Use
 
@@ -250,7 +250,7 @@ This widget pulls the latest article titles from
 [f1.com](https://www.formula1.com/en/latest.html) and displays the 3 most recent
 titles. Works best as a medium widget.
 
-![Latest News Widget Example](https://cdn.doubleuideas.com/blog/ios-f1-dashboard/latest-news.png?auto=format)
+![Latest News Widget Example](../../assets/images/blog_ios-f1-dashboard_latest-news.png)
 
 ### How To Use
 

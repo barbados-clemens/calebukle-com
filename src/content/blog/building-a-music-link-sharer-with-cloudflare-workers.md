@@ -3,7 +3,7 @@ title: Building a Music Link Sharer with Cloudflare Workers
 description: Look into how I built my own music link sharer service, all on the network edge. ⚡
 author: Caleb Ukle
 publish_date: 2020-09-07
-img: https://cdn.doubleuideas.com/blog/music-links/vinyl-placeholder.jpg?auto=format
+img: ../../assets/images/blog_music-links_vinyl-placeholder.jpg
 tags:
   - Cloudflare
   - Music
@@ -96,7 +96,7 @@ and the worst cases are sub 2ms. The rest of the time is spent on transferring
 the tiny 3.60 KB, [Brotli encoded](https://en.wikipedia.org/wiki/Brotli), text
 to your browser.
 
-![All Cloudflare worker time is <2ms](https://cdn.doubleuideas.com/blog/music-links/cf-worker-response-time.png?auto=format)
+![All Cloudflare worker time is <2ms](../../assets/images/blog_music-links_cf-worker-response-time.png)
 
 ### JS Exceptions
 

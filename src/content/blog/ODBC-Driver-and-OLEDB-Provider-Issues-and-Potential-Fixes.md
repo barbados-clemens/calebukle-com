@@ -3,7 +3,7 @@ title: ODBC Driver and OLEDB Provider Issues and Potential Fixes
 description: Issues with ODBC and OLEDB are quite annoying, typically found when trying to use these drivers to connect to an excel sheet. Here I detail how I solved my issues using IIS.
 author: Caleb Ukle
 publish_date: 2019-01-10
-img: https://cdn.doubleuideas.com/blog/odbc-driver/app-pool-adv-settings.png?auto=format
+img: ../../assets/images/blog_odbc-driver_app-pool-adv-settings.png
 tags:
   - ODBC
   - OLEDB
@@ -104,14 +104,14 @@ version, I ended up using 32-bit.
 
 ## Configure
 
-![Directly from the OLEDB download instructions](https://cdn.doubleuideas.com/blog/odbc-driver/oledb-instructions.png?auto=format)
+![Directly from the OLEDB download instructions](../../assets/images/blog_odbc-driver_oledb-instructions.png)
 
 The steps in the image above come directly from the install guide for the OLEDB
 provider, Office System Driver: Data Connectivity Components. You can add these
 Data Sources in _Control Panel > System and Security > Administrative Tools >
 ODBC Data Source (32/64-bit)._
 
-![ODBC Data Source Admin Panel](https://cdn.doubleuideas.com/blog/odbc-driver/admin-panel.png?auto=format)
+![ODBC Data Source Admin Panel](../../assets/images/blog_odbc-driver_admin-panel.png)
 
 I do not believe it’s required, but I always restarted when I changed the ODBC
 Data Sources.
@@ -152,7 +152,7 @@ the right version.
 
 1. Change “Enable 32-bit Application” to True
 
-![AppPool Advanced Settings](https://cdn.doubleuideas.com/blog/odbc-driver/app-pool-adv-settings.png?auto=format)
+![AppPool Advanced Settings](../../assets/images/blog_odbc-driver_app-pool-adv-settings.png)
 
 ## Downloads
 

@@ -3,7 +3,7 @@ title: Teach Nx Cache About Remote Content
 description: How to leverage Nx runtime hash inputs to include remote content into your build process.
 author: Caleb Ukle
 publish_date: 2022-09-05
-img: https://cdn.doubleuideas.com/blog/nx-runtime-inputs/nx-runtime-inputs.png?auto=format
+img: ../../assets/images/blog_nx-runtime-inputs_nx-runtime-inputs.png
 tags:
   - Nx
   - Sanity
@@ -86,12 +86,12 @@ You can see [the exact usage for my site here](https://github.com/barbados-cleme
 Now that you've taught Nx how to be content aware for your site. You still need to redeploy the site when the content changes. Sanity offers webhook integrations where you can filter on specific content changes.
 This means when your desired content changes, they'll ping whatever URL you want.
 
-![Sanity webhook panel](https://cdn.doubleuideas.com/blog/nx-runtime-inputs/sanity-webhook.png?auto=format)
+![Sanity webhook panel](../../assets/images/blog_nx-runtime-inputs_sanity-webhook.png)
 
 I use [Netlify](https://netlify.com) as my hosting provider, which has build hooks. This is a URL you can ping to tell Netlify you want to rebuild a given site.
 
-![Netlify build hook panel](https://cdn.doubleuideas.com/blog/nx-runtime-inputs/netlify-build-hook.png)
+![Netlify build hook panel](../../assets/images/blog_nx-runtime-inputs_netlify-build-hook.png)
 
 So I can wire up Sanity to let Netlify know when content changes, and since Nx is content aware it will have a cache miss, building the site 🎉
 
-![flowchart of full integration, sanity content changes -> netlify builds -> nx runs build -> if content changes run full build, otherwise pull from cache -> netlify publishes the changes](https://cdn.doubleuideas.com/blog/nx-runtime-inputs/flowchart-dark.webp?auto=format)
+![flowchart of full integration, sanity content changes -> netlify builds -> nx runs build -> if content changes run full build, otherwise pull from cache -> netlify publishes the changes](../../assets/images/blog_nx-runtime-inputs_flowchart-dark.webp)
