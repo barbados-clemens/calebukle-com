@@ -185,6 +185,18 @@ const formattedDate = new Date(publish_date).toLocaleDateString('en-US', {
     text-decoration-thickness: 2px;
   }
 
+  /* Heading anchor links */
+  .post-content :global(.heading-link) {
+    text-decoration: none;
+    color: #999;
+    font-weight: 400;
+    margin-left: 0.25rem;
+  }
+
+  .post-content :global(.heading-link:hover) {
+    color: var(--color-link);
+  }
+
   .post-footer {
     padding-top: 2rem;
     border-top: 2px solid var(--color-border);
